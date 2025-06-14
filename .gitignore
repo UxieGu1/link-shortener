@@ -22,3 +22,51 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Arquivos de build e IDE
+/target/
+/bin/
+/build/
+/.settings/
+/.classpath
+/.project
+/.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Dependências e logs
+/logs/
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Arquivos do Maven e Gradle
+.mvn/
+mvnw
+mvnw.cmd
+gradle/
+gradlew
+gradlew.bat
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Arquivos de configuração local
+application*.properties
+application*.yml
+/config/*
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos do Docker (opcional)
+docker-compose.yml
+Dockerfile
+
+# Arquivos do IntelliJ (opcional)
+out/
+.idea_modules/
