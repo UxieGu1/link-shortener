@@ -21,10 +21,10 @@ public class LinkController {
     }
     @PostMapping("/shorten")
     public ResponseEntity<Map<String, String>> encurtarUrl(@RequestBody Map<String, String> request){
-        String urlOriginal = request.get("url");
+        String urlOriginal = request.get("urlOriginal");
         String urlCurta = linkService.encurtarUrl(urlOriginal);
         Map<String, String> response = new HashMap<String, String>();
-        response.put("url", "https://xxx.com/"+urlCurta);
+        response.put("urlOriginal", "https://www.xxx.com/"+urlCurta);
 
         return ResponseEntity.ok(response);
     }

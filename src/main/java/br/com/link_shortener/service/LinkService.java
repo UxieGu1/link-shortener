@@ -1,5 +1,6 @@
 package br.com.link_shortener.service;
 
+import br.com.link_shortener.exception.LinkException;
 import br.com.link_shortener.model.Link;
 import br.com.link_shortener.repository.LinkRepository;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,14 @@ public class LinkService {
     }
 
     public String encurtarUrl(String urlOriginal){
-
+        if (urlOriginal == null || urlOriginal.trim().isEmpty()){
+            throw new LinkException("URL original não pode ser nula ou vazia");
+        }
         String urlCurta = gerarUrlEncurtada();
         Link link = new Link();
         link.setUrlOriginal(urlOriginal);
         link.setUrlEncurtada(urlCurta);
+        link.setUrlCriadaEm(LocalDateTime.now());
         link.setDataExpiracao(LocalDateTime.now().plusDays(30));
         linkRepository.save(link);
         return urlCurta;
