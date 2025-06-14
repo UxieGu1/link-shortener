@@ -5,6 +5,7 @@ import br.com.link_shortener.repository.LinkRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -25,6 +26,19 @@ public class LinkService {
         link.setDataExpiracao(LocalDateTime.now().plusDays(30));
         linkRepository.save(link);
         return urlCurta;
+    }
+
+    public Optional<Link> pegarUrlOriginal(String urlCurta){
+        Optional<Link> urlOptional = linkRepository.findByUrlEncurtada(urlCurta);
+        if(urlOptional.isPresent()){
+            Link link = urlOptional.get();
+            if (link.getDataExpiracao().isAfter(LocalDateTime.now())){
+                return Optional.of(link);
+            }else{
+                linkRepository.delete(link);
+            }
+        }
+        return Optional.empty();
     }
 
     public String gerarUrlEncurtada(){
