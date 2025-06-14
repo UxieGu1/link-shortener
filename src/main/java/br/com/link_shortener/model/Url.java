@@ -7,10 +7,10 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "links")
+@Table(name = "urls")
 @Getter
 @Setter
-public class Link {
+public class Url {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
