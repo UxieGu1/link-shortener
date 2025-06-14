@@ -29,6 +29,7 @@ public class Link {
     @Column(nullable = false)
     private String urlQrCode;
     private LocalDateTime urlCriadaEm;
+    private LocalDateTime dataExpiracao;
 
 
 }
